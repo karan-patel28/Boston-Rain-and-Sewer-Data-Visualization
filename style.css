@@ -1,0 +1,40 @@
+/* Adjustments for the chart container */
+.chart-container {
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif; /* Example font family */
+}
+
+/* Style adjustments for SVG and its elements */
+svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto; /* Adjust if you want a fixed height */
+}
+
+/* Style for axis labels and ticks */
+.axis text {
+  font-size: 14px; /* Increased font size */
+  fill: #333; /* Color of the text, adjust as needed */
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #333;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  stroke: #fff; /* Add a stroke to the bars if desired */
+}
+
+.axis text {
+  font-size: 14px; /* Increase the font size as needed */
+}
+
+.tick text {
+  font-size: 14px; /* Increase the font size as needed */
+}
