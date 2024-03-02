@@ -15,7 +15,7 @@ const svg = d3.select("#annual-chart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Load the data from the CSV file
-d3.csv("Dorchester_Rainfall_Pivot_2011_2018.csv").then(function (data) {
+d3.csv("Dataset/Dorchester_Rainfall_Pivot_2011_2018.csv").then(function (data) {
     // Process data to get annual totals
     data.forEach(function (d) {
         d.totalRainfall = d3.sum(Object.values(d).slice(1)); // Sum all months
@@ -121,7 +121,7 @@ function createSummerChart(year, data, chartId) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    d3.csv("Dorchester_Rainfall_Pivot_2011_2018.csv").then(function (data) {
+    d3.csv("Dataset/Dorchester_Rainfall_Pivot_2011_2018.csv").then(function (data) {
         // Get the unique years from the dataset
         const years = [...new Set(data.map(d => d.Year))];
 
