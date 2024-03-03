@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Bar Chart</title>
+</head>
+<body>
+
+
+
+<script>
+// This function will be executed when the window is loaded to ensure the DOM is ready
+window.onload = function() {
+  // Create the SVG element
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("width", "855");
+  svg.setAttribute("height", "430");
+  svg.setAttribute("version", "1.1");
+
+  // Function to create a rectangle
+  function createRectangle(x, y, width, height, color) {
+    const rect = document.createElementNS(svgNS, "rect");
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", width);
+    rect.setAttribute("height", height);
+    rect.setAttribute("fill", color);
+    svg.appendChild(rect);
+  }
+
+  // Function to create text
+  function createText(x, y, content, fontSize = "10", anchor = "middle") {
+    const text = document.createElementNS(svgNS, "text");
+    text.setAttribute("x", x);
+    text.setAttribute("y", y);
+    text.setAttribute("font-size", fontSize);
+    text.setAttribute("text-anchor", anchor);
+    text.textContent = content;
+    svg.appendChild(text);
+  }
+
+  // Constants for the bar chart
+  const barWidth = 40;
+  const barSpacing = 20;
+  const offsetX = 30;
+  const offsetY = 400;
+  const scale = 7; // Scale for the bar heights
+
+  // Data for the bars
+  const data = [53, 48, 40, 50, 18, 35, 45, 50];
+
+  // Create bars
+  data.forEach((value, index) => {
+    createRectangle(
+      (index * (barWidth + barSpacing)) + offsetX,
+      offsetY - (value * scale),
+      barWidth,
+      value * scale,
+      "#0077b6" // Blue color
+    );
+  });
+
+  // Create labels for the x-axis
+  data.forEach((value, index) => {
+    createText(
+      (index * (barWidth + barSpacing)) + offsetX + (barWidth / 2),
+      offsetY + 20,
+      (2011 + index).toString(),
+      "15"
+    );
+  });
+
+  // Append the SVG to the chart div
+  document.getElementById('chart').appendChild(svg);
+}
+</script>
+
+</body>
+</html>
